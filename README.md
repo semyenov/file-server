@@ -44,18 +44,6 @@ users:
 ```json
 [
   {
-    "name": "poryadok",
-    "password": "f4Qk28grywhfLvAy"
-  },
-  {
-    "name": "sct",
-    "password": "4ZgDV5zRDkAdw8AB"
-  },
-  {
-    "name": "11f04daf90ee6dee113f4eed03480b48",
-    "password": "nicepass"
-  },
-  {
     "name": "test",
     "password": "test"
   }
