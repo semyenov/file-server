@@ -1,0 +1,32 @@
+# build stage
+FROM golang:alpine AS build-env
+
+RUN apk add --no-cache git
+RUN go get gopkg.in/mgo.v2 && \
+  go get github.com/go-chi/chi
+
+ADD . /src
+
+RUN cd /src && \
+  go build -o goapp
+
+# final stage
+FROM alpine:edge
+
+RUN apk add --no-cache tzdata jpegoptim pngquant && \
+  rm -rf /var/cache/apk/*
+
+WORKDIR /app
+ADD entrypoint.sh /entrypoint.sh
+COPY --from=build-env /src/goapp /app/
+
+RUN touch /etc/periodic/15min/clean && \
+  echo -e "#!/bin/sh\nwget \$HOST:\$PORT/clean" >> /etc/periodic/15min/clean && \
+  chmod a+x /etc/periodic/15min/clean
+RUN touch /etc/periodic/daily/clean && \
+  echo -e "#!/bin/sh\nntpd -d -q -n -p uk.pool.ntp.org" >> /etc/periodic/daily/do-ntp && \
+  chmod a+x /etc/periodic/daily/do-ntp
+
+RUN chmod +x /entrypoint.sh
+
+ENTRYPOINT /entrypoint.sh
