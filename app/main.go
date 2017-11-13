@@ -124,7 +124,7 @@ const tpl2 = `
 			</div>
 		</div>
 		<div class="row">
-			{{range .}}
+		{{range .}}
 			<div class="col-sm-6 col-md-3 col-lg-2 entry">
 				<p title="{{.Name}}" {{if eq .Keep 0}}class="once"{{end}}>
 					<small>{{.Host}}:</small>
@@ -157,7 +157,7 @@ const tpl2 = `
 </html>
 `
 
-// Entry is a file entry
+// Entry is a file entry type
 type Entry struct {
 	ID          bson.ObjectId `bson:"_id,omitempty"`
 	Name        string        `bson:"name"`
@@ -171,7 +171,7 @@ type Entry struct {
 	Timestamp   time.Time     `bson:"timestamp"`
 }
 
-// Statistic is a statistic
+// Statistic is a statistic type
 type Statistic struct {
 	ID             bson.ObjectId `bson:"_id,omitempty"`
 	UserName       string        `bson:"user_name"`
@@ -181,11 +181,17 @@ type Statistic struct {
 	OutSize        int64         `bson:"out_size"`
 }
 
-// User is a user
+// User is a user type
 type User struct {
 	ID       bson.ObjectId `bson:"_id,omitempty"`
 	Name     string        `bson:"name"`
 	Password string        `bson:"password"`
+}
+
+type contextKey string
+
+func (c contextKey) String() string {
+	return string(c)
 }
 
 func createAuthMiddleware(realm string, s *mgo.Session) func(http.Handler) http.Handler {
@@ -214,7 +220,7 @@ func createAuthMiddleware(realm string, s *mgo.Session) func(http.Handler) http.
 			}
 
 			key := "User"
-			ctx := context.WithValue(r.Context(), key, u)
+			ctx := context.WithValue(r.Context(), contextKey(key), u)
 			next.ServeHTTP(w, r.WithContext(ctx))
 		})
 	}
@@ -271,7 +277,7 @@ func urlGet(w http.ResponseWriter, r *http.Request) {
 func urlPost(s *mgo.Session) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 		r.ParseForm()
-		u := r.Context().Value("User").(User)
+		u := r.Context().Value(contextKey("User")).(User)
 
 		jpgqlt, err := strconv.Atoi(r.Form.Get("jpgqlt"))
 		if err != nil || jpgqlt < 0 || jpgqlt > 100 {
@@ -507,7 +513,7 @@ func showFiles(s *mgo.Session) func(w http.ResponseWriter, r *http.Request) {
 		session := s.Copy()
 		defer session.Close()
 
-		u := r.Context().Value("User").(User)
+		u := r.Context().Value(contextKey("User")).(User)
 
 		var es []Entry
 		err := session.DB("store").C("entries").Find(bson.M{"user_name": u.Name}).Sort("-timestamp").Limit(500).All(&es)
@@ -531,7 +537,7 @@ func showFiles(s *mgo.Session) func(w http.ResponseWriter, r *http.Request) {
 
 func statisticGet(s *mgo.Session) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
-		u := r.Context().Value("User").(User)
+		u := r.Context().Value(contextKey("User")).(User)
 
 		session := s.Copy()
 		defer session.Close()
@@ -561,7 +567,7 @@ func statisticGet(s *mgo.Session) func(w http.ResponseWriter, r *http.Request) {
 func statisticPost(s *mgo.Session) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 		r.ParseForm()
-		u := r.Context().Value("User").(User)
+		u := r.Context().Value(contextKey("User")).(User)
 
 		host := r.Form.Get("host")
 
