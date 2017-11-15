@@ -29,7 +29,7 @@ const tpl1 = `
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Upload file</title>
-	<link rel="stylesheet" href="https://gitcdn.link/repo/Chalarangelo/mini.css/master/dist/mini-dark.min.css">	
+	<link rel="stylesheet" href="https://gitcdn.link/repo/Chalarangelo/mini.css/master/dist/mini-dark.min.css">
 	<style>
 		.input-group [type="checkbox"]+label {
 			margin-left: 1.5rem;
@@ -46,7 +46,7 @@ const tpl1 = `
 		<div class="row">
 			<form action="/url" method="post" class="col-sm">
 				<fieldset>
-					<legend>File Upload</legend>	
+					<legend>File Upload</legend>
 					<div class="input-group vertical">
 						<label for="uploadfile">uploadfile</label>
 						<input type="text" name="uploadfile" id="uploadfile" />
@@ -56,7 +56,7 @@ const tpl1 = `
 						<input type="text" name="pngqlt" id="pngqlt" value="60" />
 					</div>
 					<div class="input-group vertical">
-						<label for="jpgqlt">jpgqlt</label>	
+						<label for="jpgqlt">jpgqlt</label>
 						<input type="text" name="jpgqlt" id="jpgqlt" value="75" />
 					</div>
 					<div class="input-group vertical">
@@ -386,7 +386,7 @@ func urlPost(s *mgo.Session) func(w http.ResponseWriter, r *http.Request) {
 
 		st := Statistic{}
 		if u.Name == "test" && u.Password == "test" {
-			err := sc.DB("store").C("statistics").Find(bson.M{"host": host, "user_name": u.Name}).One(&st)
+			err = sc.DB("store").C("statistics").Find(bson.M{"host": host, "user_name": u.Name}).One(&st)
 			tq, _ := strconv.ParseInt(os.Getenv("TEST_QUANTITY"), 10, 64)
 			if err == nil && st.UploadQuantity >= tq {
 				errStr := fmt.Sprintf("TestQuantityExceeded: %d", st.UploadQuantity)
