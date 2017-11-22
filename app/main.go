@@ -31,6 +31,12 @@ const tpl1 = `
 	<title>Upload file</title>
 	<link rel="stylesheet" href="https://gitcdn.link/repo/Chalarangelo/mini.css/master/dist/mini-dark.min.css">
 	<style>
+		.title a {
+			margin-right: .5rem;
+		}
+		.title a:last-child {
+			margin-right: 0;
+		}
 		.input-group [type="checkbox"]+label {
 			margin-left: 1.5rem;
 		}
@@ -40,7 +46,14 @@ const tpl1 = `
 	<div class="container" style="margin-bottom: 2.5rem;">
 		<div class="row">
 			<div class="col-sm">
-				<h1>Upload</h1>
+				<h1 class="title">
+					Upload
+					<small>
+						<a href="/">Store</a>
+						<a href="/url">Upload</a>
+						<a href="/stat" target="_blank">Stat</a>
+					</small>
+				</h1>
 			</div>
 		</div>
 		<div class="row">
@@ -79,6 +92,12 @@ const tpl2 = `
 	<title>Upload file</title>
 	<link rel="stylesheet" href="https://gitcdn.link/repo/Chalarangelo/mini.css/master/dist/mini-dark.min.css">
 	<style>
+		.title a {
+			margin-right: .5rem;
+		}
+		.title a:last-child {
+			margin-right: 0;
+		}
 		.entry {
 			border-bottom: 1px solid rgba(208, 208, 208, 0.1);
 		}
@@ -120,7 +139,14 @@ const tpl2 = `
 	<div class="container" style="margin-bottom: 2.5rem;">
 		<div class="row">
 			<div class="col-sm">
-				<h1>Store</h1>
+				<h1 class="title">
+					Store
+					<small>
+						<a href="/">Store</a>
+						<a href="/url">Upload</a>
+						<a href="/stat" target="_blank">Stat</a>
+					</small>
+				</h1>
 			</div>
 		</div>
 		<div class="row">
