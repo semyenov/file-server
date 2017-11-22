@@ -3,8 +3,8 @@ app:
   environment:
     - HOST=0.0.0.0
     - PORT=8080
-    - TEST_QUANTITY=1000
-    - DAYS_TO_KEEP=1
+    - TEST_QUANTITY=100
+    - DAYS_TO_KEEP=90
     - TZ=Europe/Moscow
   links:
     - db

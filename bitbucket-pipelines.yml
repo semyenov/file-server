@@ -1,8 +1,0 @@
-pipelines:
-  default:
-    - step:
-        script:
-          - ssh root@77.244.214.132 "cd file-server; git status"
-          - ssh root@77.244.214.132 "cd file-server; git fetch --all; git reset --hard origin/master"
-          - ssh root@77.244.214.132 "cd file-server; docker-compose build"
-          - ssh root@77.244.214.132 "cd file-server; docker-compose up -d"

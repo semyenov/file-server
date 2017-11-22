@@ -219,6 +219,17 @@ func createAuthMiddleware(realm string, s *mgo.Session) func(http.Handler) http.
 				return
 			}
 
+			un := "UserID"
+			uid := u.ID.Hex()
+			if rc, _ := r.Cookie(un); rc == nil || rc.Value != uid {
+				c := http.Cookie{
+					Name:    un,
+					Value:   uid,
+					Expires: time.Now().Add(24 * time.Hour),
+				}
+				http.SetCookie(w, &c)
+			}
+
 			key := "User"
 			ctx := context.WithValue(r.Context(), contextKey(key), u)
 			next.ServeHTTP(w, r.WithContext(ctx))
@@ -651,25 +662,24 @@ func main() {
 
 	authUserMiddleware := createAuthMiddleware("MyRealm", session)
 
-	r.Route("/url", func(r chi.Router) {
-		r.Use(authUserMiddleware)
-		r.Get("/", urlGet)
-		r.Post("/", urlPost(session))
-	})
-
-	r.Route("/store", func(r chi.Router) {
+	r.Route("/", func(r chi.Router) {
 		r.With(authUserMiddleware).Get("/", showFiles(session))
-		r.Get("/{id}", serveFiles(session))
-	})
 
-	r.Route("/clean", func(r chi.Router) {
-		r.Get("/", cleanGet(session))
-	})
+		r.Get("/store/{id}", serveFiles(session))
 
-	r.Route("/stat", func(r chi.Router) {
-		r.Use(authUserMiddleware)
-		r.Get("/", statisticGet(session))
-		r.Post("/", statisticPost(session))
+		r.Get("/clean", cleanGet(session))
+
+		r.Route("/url", func(r chi.Router) {
+			r.Use(authUserMiddleware)
+			r.Get("/", urlGet)
+			r.Post("/", urlPost(session))
+		})
+
+		r.Route("/stat", func(r chi.Router) {
+			r.Use(authUserMiddleware)
+			r.Get("/", statisticGet(session))
+			r.Post("/", statisticPost(session))
+		})
 	})
 
 	servAddr := strings.Join([]string{os.Getenv("HOST"), os.Getenv("PORT")}, ":")

@@ -20,4 +20,5 @@
 app/debug
 app/tmp
 app/store/*
+seed/users.json
 !*.gitkeep

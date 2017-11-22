@@ -27,16 +27,16 @@ response:
 }
 ```
 
-File stored at http://localhost/store/59e5ab624cd0a60009b0f59f
-
-Last 500 file links at http://localhost/store
+Last 500 file links @ http://localhost/
+File stored @ http://localhost/store/59e5ab624cd0a60009b0f59f
+User statistic @ http://localhost/stat
 
 ### Enviroment variables (docker-compose.yml app.enviroment)
 ```yml
 HOST=0.0.0.0
 PORT=8080
-TEST_QUANTITY=1000
-DAYS_TO_KEEP=1
+TEST_QUANTITY=100
+DAYS_TO_KEEP=90
 TZ=Europe/Moscow
 ```
 
