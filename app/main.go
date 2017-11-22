@@ -50,7 +50,7 @@ const tpl1 = `
 					Upload
 					<small>
 						<a href="/">Store</a>
-						<a href="#">Upload</a>
+						<a href="/url">Upload</a>
 						<a href="/stat" target="_blank">Stat</a>
 					</small>
 				</h1>
@@ -142,7 +142,7 @@ const tpl2 = `
 				<h1 class="title">
 					Store
 					<small>
-						<a href="#">Store</a>
+						<a href="/">Store</a>
 						<a href="/url">Upload</a>
 						<a href="/stat" target="_blank">Stat</a>
 					</small>
