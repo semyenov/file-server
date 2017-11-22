@@ -32,7 +32,7 @@ const tpl1 = `
 	<link rel="stylesheet" href="https://gitcdn.link/repo/Chalarangelo/mini.css/master/dist/mini-dark.min.css">
 	<style>
 		.title a {
-			margin-right: .5rem;
+			margin-right: 0.5rem;
 		}
 		.title a:last-child {
 			margin-right: 0;
@@ -50,7 +50,7 @@ const tpl1 = `
 					Upload
 					<small>
 						<a href="/">Store</a>
-						<a href="/url">Upload</a>
+						<a href="#">Upload</a>
 						<a href="/stat" target="_blank">Stat</a>
 					</small>
 				</h1>
@@ -93,7 +93,7 @@ const tpl2 = `
 	<link rel="stylesheet" href="https://gitcdn.link/repo/Chalarangelo/mini.css/master/dist/mini-dark.min.css">
 	<style>
 		.title a {
-			margin-right: .5rem;
+			margin-right: 0.5rem;
 		}
 		.title a:last-child {
 			margin-right: 0;
@@ -116,7 +116,7 @@ const tpl2 = `
 			font-size: 0.7rem;
 			font-weight: bold;
 			line-height: 1;
-			padding: 0.15rem 0;
+			padding: 0.15rem 0 0.25rem;
 			position: relative;
 			text-align: center;
 			top: -0.55rem;
@@ -142,7 +142,7 @@ const tpl2 = `
 				<h1 class="title">
 					Store
 					<small>
-						<a href="/">Store</a>
+						<a href="#">Store</a>
 						<a href="/url">Upload</a>
 						<a href="/stat" target="_blank">Stat</a>
 					</small>
