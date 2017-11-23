@@ -1,32 +1,43 @@
-app:
-  build: ./app
-  environment:
-    - HOST=0.0.0.0
-    - PORT=8080
-    - TEST_QUANTITY=100
-    - DAYS_TO_KEEP=90
-    - TZ=Europe/Moscow
-  links:
-    - db
-  volumes:
-    - ./app/store:/app/store
-  privileged: true
-  restart: always
-db:
-  image: mongo
-  restart: always
-  privileged: true
-seed:
-  build: ./seed
-  links:
-    - db
-nginx:
-  build: ./nginx
-  ports:
-    - "80:80"
-  links:
-    - app
-  environment:
-    - TZ=Europe/Moscow
-  restart: always
-  privileged: true
+version: '2'
+services:
+  app:
+    build: ./app
+    image: semyenov/fileserver-app
+    environment:
+      - HOST=0.0.0.0
+      - PORT=8080
+      - TEST_QUANTITY=100
+      - DAYS_TO_KEEP=90
+      - TZ=Europe/Moscow
+      - DB_ADDR=db:27017
+    links:
+      - db
+    volumes:
+      - ./app/store:/app/store
+    privileged: true
+    restart: always
+  db:
+    image: mongo
+    volumes: 
+      - mongostorage:/data/db
+    restart: always
+    privileged: true
+  seed:
+    build: ./seed
+    image: semyenov/fileserver-seed
+    links:
+      - db
+  nginx:
+    build: ./nginx
+    image: semyenov/fileserver-nginx
+    ports:
+      - 80:80
+    links:
+      - app
+    environment:
+      - TZ=Europe/Moscow
+    restart: always
+    privileged: true
+volumes:
+  mongostorage:
+    driver: local

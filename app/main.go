@@ -31,10 +31,22 @@ const tpl1 = `
 	<title>Upload file</title>
 	<link rel="stylesheet" href="https://gitcdn.link/repo/Chalarangelo/mini.css/master/dist/mini-dark.min.css">
 	<style>
-		.title a {
+		.title {
+			border-bottom: 1px dashed rgba(208, 208, 208, 0.1);
+		}
+		.title span {
+			display: inline-block;
+			font-size: inherit;
+			width: 7rem;
+		}
+		.title small {
+			display: inline-block;
+			margin-left: 1rem;
+		}
+		.title small a {
 			margin-right: 0.5rem;
 		}
-		.title a:last-child {
+		.title small a:last-child {
 			margin-right: 0;
 		}
 		.input-group [type="checkbox"]+label {
@@ -45,12 +57,11 @@ const tpl1 = `
 <body>
 	<div class="container" style="margin-bottom: 2.5rem;">
 		<div class="row">
-			<div class="col-sm">
-				<h1 class="title">
-					Upload
+			<div class="col-sm title">
+				<h1>
+					<span>Upload</span>
 					<small>
 						<a href="/">Store</a>
-						<a href="/url">Upload</a>
 						<a href="/stat" target="_blank">Stat</a>
 					</small>
 				</h1>
@@ -92,14 +103,26 @@ const tpl2 = `
 	<title>Upload file</title>
 	<link rel="stylesheet" href="https://gitcdn.link/repo/Chalarangelo/mini.css/master/dist/mini-dark.min.css">
 	<style>
-		.title a {
+		.title {
+			border-bottom: 1px dashed rgba(208, 208, 208, 0.1);
+		}
+		.title span {
+			display: inline-block;
+			font-size: inherit;
+			width: 7rem;
+		}
+		.title small {
+			display: inline-block;
+			margin-left: 1rem;
+		}
+		.title small a {
 			margin-right: 0.5rem;
 		}
-		.title a:last-child {
+		.title small a:last-child {
 			margin-right: 0;
 		}
 		.entry {
-			border-bottom: 1px solid rgba(208, 208, 208, 0.1);
+			border-bottom: 1px dashed rgba(208, 208, 208, 0.1);
 		}
 		.entry p {
 			word-wrap: break-word;
@@ -138,11 +161,10 @@ const tpl2 = `
 <body>
 	<div class="container" style="margin-bottom: 2.5rem;">
 		<div class="row">
-			<div class="col-sm">
-				<h1 class="title">
-					Store
+			<div class="col-sm title">
+				<h1>
+					<span>Store</span>
 					<small>
-						<a href="/">Store</a>
 						<a href="/url">Upload</a>
 						<a href="/stat" target="_blank">Stat</a>
 					</small>
@@ -224,7 +246,6 @@ func createAuthMiddleware(realm string, s *mgo.Session) func(http.Handler) http.
 	return func(next http.Handler) http.Handler {
 		return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 			name, password, ok := r.BasicAuth()
-
 			if !ok {
 				unauthorized(w, realm)
 				return
@@ -374,7 +395,6 @@ func urlPost(s *mgo.Session) func(w http.ResponseWriter, r *http.Request) {
 		sl = strings.Split(sl[len(sl)-1], ".")
 
 		fn := strings.Join(sl[0:len(sl)-1], ".")
-
 		if len(fn) == 0 {
 			fn = "untitled"
 		}
@@ -391,7 +411,7 @@ func urlPost(s *mgo.Session) func(w http.ResponseWriter, r *http.Request) {
 			}
 		}
 
-		fn += ex
+		fn = strings.Join([]string{fn, ex}, "")
 		pt := calcPath(fn)
 
 		fo, err := os.OpenFile(pt, os.O_RDWR|os.O_CREATE, 0666)
@@ -423,7 +443,12 @@ func urlPost(s *mgo.Session) func(w http.ResponseWriter, r *http.Request) {
 
 		st := Statistic{}
 		if u.Name == "test" && u.Password == "test" {
-			err = sc.DB("store").C("statistics").Find(bson.M{"host": host, "user_name": u.Name}).One(&st)
+			err = sc.DB("store").C("statistics").Find(
+				bson.M{
+					"host":      host,
+					"user_name": u.Name,
+				},
+			).One(&st)
 			tq, _ := strconv.ParseInt(os.Getenv("TEST_QUANTITY"), 10, 64)
 			if err == nil && st.UploadQuantity >= tq {
 				errStr := fmt.Sprintf("TestQuantityExceeded: %d", st.UploadQuantity)
@@ -612,7 +637,12 @@ func statisticPost(s *mgo.Session) func(w http.ResponseWriter, r *http.Request) 
 		defer session.Close()
 
 		st := Statistic{}
-		err := session.DB("store").C("statistics").Find(bson.M{"user_name": u.Name, "host": host}).One(&st)
+		err := session.DB("store").C("statistics").Find(
+			bson.M{
+				"user_name": u.Name,
+				"host":      host,
+			},
+		).One(&st)
 		if err != nil {
 			errStr := fmt.Sprintf("DbStatisticsFindOne: %s", err.Error())
 			log.Println(errStr)
@@ -676,7 +706,7 @@ func cleanGet(s *mgo.Session) func(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
-	mgoAddr := strings.Join([]string{os.Getenv("DB_PORT_27017_TCP_ADDR"), os.Getenv("DB_PORT_27017_TCP_PORT")}, ":")
+	mgoAddr := os.Getenv("DB_ADDR")
 	session, err := mgo.Dial(mgoAddr)
 	if err != nil {
 		log.Fatal(err)
