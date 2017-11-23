@@ -675,8 +675,23 @@ func cleanGet(s *mgo.Session) func(w http.ResponseWriter, r *http.Request) {
 		err := session.DB("store").C("entries").Find(
 			bson.M{
 				"$or": []bson.M{
-					bson.M{"user_name": "test"},
-					bson.M{"timestamp": bson.M{"$lt": time.Now().AddDate(0, 0, -dtk)}},
+					bson.M{
+						"$and": []bson.M{
+							bson.M{
+								"user_name": "test",
+							},
+							bson.M{
+								"timestamp": bson.M{
+									"$lt": time.Now().Add(-time.Minute),
+								},
+							},
+						},
+					},
+					bson.M{
+						"timestamp": bson.M{
+							"$lt": time.Now().AddDate(0, 0, -dtk),
+						},
+					},
 				},
 			},
 		).All(&es)
