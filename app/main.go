@@ -33,27 +33,27 @@ const tpl1 = `
 	<title>Upload file</title>
 	<link rel="stylesheet" href="https://gitcdn.link/repo/Chalarangelo/mini.css/master/dist/mini-dark.min.css">
 	<style>
-	.title {
-		border-bottom: 1px dashed rgba(208, 208, 208, 0.1);
-	}
-	.title span {
-		display: inline-block;
-		font-size: inherit;
-		width: 7rem;
-	}
-	.title small {
-		display: inline-block;
-		margin-left: 1rem;
-	}
-	.title small a {
-		margin-right: 0.5rem;
-	}
-	.title small a:last-child {
-		margin-right: 0;
-	}
-	.input-group [type="checkbox"]+label {
-		margin-left: 1.5rem;
-	}
+		.title {
+			border-bottom: 1px dashed rgba(208, 208, 208, 0.1);
+		}
+		.title span {
+			display: inline-block;
+			font-size: inherit;
+			width: 7rem;
+		}
+		.title small {
+			display: inline-block;
+			margin-left: 1rem;
+		}
+		.title small a {
+			margin-right: 0.5rem;
+		}
+		.title small a:last-child {
+			margin-right: 0;
+		}
+		.input-group [type="checkbox"]+label {
+			margin-left: 1.5rem;
+		}
 	</style>
 </head>
 <body>
@@ -107,60 +107,60 @@ const tpl2 = `
 	<title>Upload file</title>
 	<link rel="stylesheet" href="https://gitcdn.link/repo/Chalarangelo/mini.css/master/dist/mini-dark.min.css">
 	<style>
-	.title {
-		border-bottom: 1px dashed rgba(208, 208, 208, 0.1);
-	}
-	.title span {
-		display: inline-block;
-		font-size: inherit;
-		width: 7rem;
-	}
-	.title small {
-		display: inline-block;
-		margin-left: 1rem;
-	}
-	.title small a {
-		margin-right: 0.5rem;
-	}
-	.title small a:last-child {
-		margin-right: 0;
-	}
-	.entry {
-		border-bottom: 1px dashed rgba(208, 208, 208, 0.1);
-	}
-	.entry p,
-	.entry small {
-		word-wrap: break-word;
-	}
-	.entry p.once {
-		position: relative;
-	}
-	.entry p.once::after {
-		background-color: rgba(198, 40, 40, 0.9);
-		border-radius: 0.25rem;
-		color: #242f33;
-		content: "once";
-		display: inline-block;
-		font-size: 0.7rem;
-		font-weight: bold;
-		line-height: 1;
-		padding: 0.15rem 0 0.25rem;
-		position: relative;
-		text-align: center;
-		top: -0.55rem;
-		width: 2.25rem;
-	}
-	.entry a {
-		display: inline-block;
-		text-decoration: none;
-		text-overflow: ellipsis;
-		overflow: hidden;
-		white-space: nowrap;
-		width: 100%;
-	}
-	.entry p.once a {
-		width: calc(100% - 2.5rem);
-	}
+		.title {
+			border-bottom: 1px dashed rgba(208, 208, 208, 0.1);
+		}
+		.title span {
+			display: inline-block;
+			font-size: inherit;
+			width: 7rem;
+		}
+		.title small {
+			display: inline-block;
+			margin-left: 1rem;
+		}
+		.title small a {
+			margin-right: 0.5rem;
+		}
+		.title small a:last-child {
+			margin-right: 0;
+		}
+		.entry {
+			border-bottom: 1px dashed rgba(208, 208, 208, 0.1);
+		}
+		.entry p,
+		.entry small {
+			word-wrap: break-word;
+		}
+		.entry p.once {
+			position: relative;
+		}
+		.entry p.once::after {
+			background-color: rgba(198, 40, 40, 0.9);
+			border-radius: 0.25rem;
+			color: #242f33;
+			content: "once";
+			display: inline-block;
+			font-size: 0.7rem;
+			font-weight: bold;
+			line-height: 1;
+			padding: 0.15rem 0 0.25rem;
+			position: relative;
+			text-align: center;
+			top: -0.55rem;
+			width: 2.25rem;
+		}
+		.entry a {
+			display: inline-block;
+			text-decoration: none;
+			text-overflow: ellipsis;
+			overflow: hidden;
+			white-space: nowrap;
+			width: 100%;
+		}
+		.entry p.once a {
+			width: calc(100% - 2.5rem);
+		}
 	</style>
 </head>
 <body>
@@ -189,22 +189,22 @@ const tpl2 = `
 		</div>
 	</div>
 	<script type="text/javascript">
-	document
-		.querySelectorAll(".once")
-		.forEach(function (elm) {
-			elm
-				.children[2]
-				.addEventListener(
-					"click",
-					function (evt) {
-						evt
-							.target
-							.parentElement
-							.parentElement
-							.remove();
-					}
-				);
-		});
+		document
+			.querySelectorAll(".once")
+			.forEach(function (elm) {
+				elm
+					.children[2]
+					.addEventListener(
+						"click",
+						function (evt) {
+							evt
+								.target
+								.parentElement
+								.parentElement
+								.remove();
+						}
+					);
+			});
 	</script>
 </body>
 </html>
