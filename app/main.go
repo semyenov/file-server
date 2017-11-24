@@ -235,7 +235,7 @@ const tpl2 = `
 		document
 			.querySelectorAll(".once")
 			.forEach(function (elm) {
-				elm0.15rem 0.5rem
+				elm
 					.children[2]
 					.addEventListener(
 						"click",
