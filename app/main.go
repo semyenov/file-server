@@ -62,7 +62,7 @@ const tpl1 = `
 			display: inline-block;
 			margin-left: 1rem;
 		}
-		.title small a {
+		.title small a {screenshots.firefoxusercontent.com
 			margin-right: 0.5rem;
 		}
 		.title small a:last-child {
@@ -80,7 +80,7 @@ const tpl1 = `
 				<h1>
 					<span>Upload</span>
 					<small>
-						<a href="/">Store</a>
+						<a href="/">Stscreenshots.firefoxusercontent.comore</a>
 						<a href="/stat" target="_blank">Stat</a>
 					</small>
 				</h1>
@@ -171,18 +171,20 @@ const tpl2 = `
 			padding: 0.15rem 0 0.25rem;
 			position: relative;
 			text-align: center;
-			top: -0.25rem;
+			top: -0.55rem;
 			width: 2.25rem;
 		}
 		.entry a,
 		.entry small {
 			display: inline-block;
-			line-height: 1;
 			overflow: hidden;
 			text-decoration: none;
 			text-overflow: ellipsis;
 			white-space: nowrap;
 			width: 100%;
+		}
+		.entry small {
+			margin-bottom: -0.4rem;
 		}
 		.entry p.once a {
 			width: calc(100% - 2.5rem);
