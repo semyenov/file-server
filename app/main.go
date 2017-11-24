@@ -45,6 +45,7 @@ const tpl1 = `
 			background: none;
 			border: none;
 			margin: 0.5rem 0;
+			padding: 0 !important;
 		}
 		fieldset {
 			border-color: rgba(33, 33, 33, 0.1);
@@ -80,6 +81,7 @@ const tpl1 = `
 		}
 		.input-group [type="checkbox"]+label {
 			margin-left: 1.5rem;
+			padding: 0.15rem 0.5rem;
 		}
 	</style>
 </head>
@@ -99,25 +101,25 @@ const tpl1 = `
 		<div class="row">
 			<form action="/url" method="post" class="col-sm">
 				<fieldset>
-					<legend>file upload</legend>
+					<legend>File upload</legend>
 					<div class="input-group vertical">
-						<label for="uploadfile">uploadfile</label>
+						<label for="uploadfile">Upload file</label>
 						<input type="text" name="uploadfile" id="uploadfile" />
 					</div>
 					<div class="input-group vertical">
-						<label for="pngqlt">pngqlt</label>
+						<label for="pngqlt">Png quality</label>
 						<input type="text" name="pngqlt" id="pngqlt" value="60" />
 					</div>
 					<div class="input-group vertical">
-						<label for="jpgqlt">jpgqlt</label>
+						<label for="jpgqlt">Jpg quality</label>
 						<input type="text" name="jpgqlt" id="jpgqlt" value="75" />
 					</div>
 					<div class="input-group vertical">
 						<input type="checkbox" name="keep" id="keep" value="1" checked />
-						<label for="keep">keep</label>
+						<label for="keep">Keep</label>
 					</div>
 				</fieldset>
-				<input type="submit" value="upload" />
+				<input type="submit" value="Upload" />
 			</form>
 		</div>
 	</div>
@@ -141,6 +143,9 @@ const tpl2 = `
 		body {
 			background-image: linear-gradient(to bottom, rgba(33, 33, 33, 0.05) 0%, rgb(248, 248, 248) 100%);
 			background-repeat: no-repeat;
+		}
+		.container {
+			margin-bottom: 2.5rem;
 		}
 		.title {
 			border-bottom: 1px dashed rgba(33, 33, 33, 0.1);
@@ -202,7 +207,7 @@ const tpl2 = `
 	</style>
 </head>
 <body>
-	<div class="container" style="margin-bottom: 2.5rem;">
+	<div class="container">
 		<div class="row">
 			<div class="col-sm title">
 				<h1>
@@ -230,7 +235,7 @@ const tpl2 = `
 		document
 			.querySelectorAll(".once")
 			.forEach(function (elm) {
-				elm
+				elm0.15rem 0.5rem
 					.children[2]
 					.addEventListener(
 						"click",
