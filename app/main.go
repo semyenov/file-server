@@ -33,6 +33,15 @@ const tpl1 = `
 	<title>Upload file</title>
 	<link rel="stylesheet" href="https://gitcdn.link/repo/Chalarangelo/mini.css/master/dist/mini-default.min.css">
 	<style>
+		form {
+			border: none;
+			background: none;
+			margin: 0.5rem 0;
+		}
+		fieldset {
+			border-style: dashed;
+			border-color: rgba(33, 33, 33, 0.1);
+		}
 		.title {
 			border-bottom: 1px dashed rgba(33, 33, 33, 0.1);
 		}
@@ -90,7 +99,7 @@ const tpl1 = `
 						<label for="keep">keep</label>
 					</div>
 				</fieldset>
-				<input type="submit" value="Upload" class="primary" />
+				<input type="submit" value="Upload" />
 			</form>
 		</div>
 	</div>
