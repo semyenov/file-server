@@ -42,13 +42,23 @@ const tpl1 = `
 			background-repeat: no-repeat;
 		}
 		form {
-			border: none;
 			background: none;
+			border: none;
 			margin: 0.5rem 0;
 		}
 		fieldset {
-			border-style: dashed;
 			border-color: rgba(33, 33, 33, 0.1);
+			border-style: dashed;
+		}
+		[type=submit] {
+			background: rgb(250, 250, 250);
+			border: 1px solid #c9c9c9;
+			margin-left: 0.95rem;
+		}
+		[type=submit]:hover,
+		[type=submit]:focus {
+			background: inherit;
+			border-color: #0288d1;
 		}
 		.title {
 			border-bottom: 1px dashed rgba(33, 33, 33, 0.1);
@@ -89,7 +99,7 @@ const tpl1 = `
 		<div class="row">
 			<form action="/url" method="post" class="col-sm">
 				<fieldset>
-					<legend>File Upload</legend>
+					<legend>file upload</legend>
 					<div class="input-group vertical">
 						<label for="uploadfile">uploadfile</label>
 						<input type="text" name="uploadfile" id="uploadfile" />
@@ -107,7 +117,7 @@ const tpl1 = `
 						<label for="keep">keep</label>
 					</div>
 				</fieldset>
-				<input type="submit" value="Upload" />
+				<input type="submit" value="upload" />
 			</form>
 		</div>
 	</div>
