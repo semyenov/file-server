@@ -62,7 +62,7 @@ const tpl1 = `
 			display: inline-block;
 			margin-left: 1rem;
 		}
-		.title small a {screenshots.firefoxusercontent.com
+		.title small a {
 			margin-right: 0.5rem;
 		}
 		.title small a:last-child {
@@ -80,7 +80,7 @@ const tpl1 = `
 				<h1>
 					<span>Upload</span>
 					<small>
-						<a href="/">Stscreenshots.firefoxusercontent.comore</a>
+						<a href="/">Store</a>
 						<a href="/stat" target="_blank">Stat</a>
 					</small>
 				</h1>
