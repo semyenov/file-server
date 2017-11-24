@@ -31,10 +31,10 @@ const tpl1 = `
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<title>Upload file</title>
-	<link rel="stylesheet" href="https://gitcdn.link/repo/Chalarangelo/mini.css/master/dist/mini-dark.min.css">
+	<link rel="stylesheet" href="https://gitcdn.link/repo/Chalarangelo/mini.css/master/dist/mini-default.min.css">
 	<style>
 		.title {
-			border-bottom: 1px dashed rgba(208, 208, 208, 0.1);
+			border-bottom: 1px dashed rgba(33, 33, 33, 0.1);
 		}
 		.title span {
 			display: inline-block;
@@ -90,7 +90,7 @@ const tpl1 = `
 						<label for="keep">keep</label>
 					</div>
 				</fieldset>
-				<input type="submit" value="Upload" />
+				<input type="submit" value="Upload" class="primary" />
 			</form>
 		</div>
 	</div>
@@ -105,10 +105,10 @@ const tpl2 = `
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<title>Upload file</title>
-	<link rel="stylesheet" href="https://gitcdn.link/repo/Chalarangelo/mini.css/master/dist/mini-dark.min.css">
+	<link rel="stylesheet" href="https://gitcdn.link/repo/Chalarangelo/mini.css/master/dist/mini-default.min.css">
 	<style>
 		.title {
-			border-bottom: 1px dashed rgba(208, 208, 208, 0.1);
+			border-bottom: 1px dashed rgba(33, 33, 33, 0.1);
 		}
 		.title span {
 			display: inline-block;
@@ -126,19 +126,18 @@ const tpl2 = `
 			margin-right: 0;
 		}
 		.entry {
-			border-bottom: 1px dashed rgba(208, 208, 208, 0.1);
+			border-bottom: 1px dashed rgba(33, 33, 33, 0.1);
 		}
-		.entry p,
-		.entry small {
+		.entry p {
 			word-wrap: break-word;
 		}
 		.entry p.once {
 			position: relative;
 		}
 		.entry p.once::after {
-			background-color: rgba(198, 40, 40, 0.9);
+			background-color: rgba(229, 57, 53, 0.95);
 			border-radius: 0.25rem;
-			color: #242f33;
+			color: #f8f8f8;
 			content: "once";
 			display: inline-block;
 			font-size: 0.7rem;
@@ -147,14 +146,16 @@ const tpl2 = `
 			padding: 0.15rem 0 0.25rem;
 			position: relative;
 			text-align: center;
-			top: -0.55rem;
+			top: -0.25rem;
 			width: 2.25rem;
 		}
-		.entry a {
+		.entry a,
+		.entry small {
 			display: inline-block;
+			line-height: 1;
+			overflow: hidden;
 			text-decoration: none;
 			text-overflow: ellipsis;
-			overflow: hidden;
 			white-space: nowrap;
 			width: 100%;
 		}
