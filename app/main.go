@@ -33,6 +33,14 @@ const tpl1 = `
 	<title>Upload file</title>
 	<link rel="stylesheet" href="https://gitcdn.link/repo/Chalarangelo/mini.css/master/dist/mini-default.min.css">
 	<style>
+		html,
+		body {
+			height: 100%;
+		}
+		body {
+			background-image: linear-gradient(to bottom, rgba(33, 33, 33, 0.05) 0%, rgb(248, 248, 248) 100%);
+			background-repeat: no-repeat;
+		}
 		form {
 			border: none;
 			background: none;
@@ -116,6 +124,14 @@ const tpl2 = `
 	<title>Upload file</title>
 	<link rel="stylesheet" href="https://gitcdn.link/repo/Chalarangelo/mini.css/master/dist/mini-default.min.css">
 	<style>
+		html,
+		body {
+			height: 100%;
+		}
+		body {
+			background-image: linear-gradient(to bottom, rgba(33, 33, 33, 0.05) 0%, rgb(248, 248, 248) 100%);
+			background-repeat: no-repeat;
+		}
 		.title {
 			border-bottom: 1px dashed rgba(33, 33, 33, 0.1);
 		}
