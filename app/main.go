@@ -79,9 +79,14 @@ const tpl1 = `
 		.title small a:last-child {
 			margin-right: 0;
 		}
-		.input-group [type="checkbox"]+label {
+		.input-group [type="checkbox"] + label {
 			margin-left: 1.5rem;
+			margin-top: 0.55rem;
 			padding: 0.15rem 0.5rem;
+		}
+		.input-group [type="checkbox"] + label::before,
+		.input-group [type="checkbox"] + label::after {
+			border-radius: 50%;
 		}
 	</style>
 </head>
