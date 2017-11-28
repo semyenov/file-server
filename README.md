@@ -1,7 +1,9 @@
 # Golang / Mgo file server
 
-### Example
+## Example
+
 curl:
+
 ```sh
 curl -X POST \
   'http://localhost/url' \
@@ -12,6 +14,7 @@ curl -X POST \
 ```
 
 response:
+
 ```json
 {
   "ID": "5a1d87f73a7e65000b685f7f",
@@ -22,18 +25,19 @@ response:
   "OutSize": 1379,
   "UserName": "test",
   "Host": "sct.ru",
-  "Keep": 1,
+  "Keep": 0,
   "Timestamp": "2017-11-28T18:59:51.965003054+03:00"
 }
 ```
 
-Last 500 file links @ http://localhost/
+Last 500 file links @ <http://localhost/>
 
-File stored @ http://localhost/store/59e5ab624cd0a60009b0f59f
+File stored @ <http://localhost/store/59e5ab624cd0a60009b0f59f>
 
-User statistic @ http://localhost/stat
+User statistic @ <http://localhost/stat>
 
-### Enviroment variables (docker-compose.yml app.enviroment)
+## Enviroment variables (docker-compose.yml app.enviroment)
+
 ```yml
 HOST=0.0.0.0
 PORT=8080
@@ -43,6 +47,7 @@ TZ=Europe/Moscow
 ```
 
 users:
+
 ```json
 [
   {
@@ -53,6 +58,7 @@ users:
 ```
 
 To update users run:
+
 ```sh
 docker-compose build seed && docker-compose run seed
 ```
