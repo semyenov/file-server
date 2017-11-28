@@ -14,16 +14,16 @@ curl -X POST \
 response:
 ```json
 {
-  "ID": "59e5ab624cd0a60009b0f59f",
-  "Name": "stock-photo-fairy-path-140700811-1600px-1500x1000.jpg",
-  "Path": "./store/226b0d28460e12bc381ee63405c3f8e6-logo.b13867c.png",
-  "ContentType": "image/jpeg",
-  "InSize": 299710,
-  "OutSize": 184094,
-  "User": "test",
+  "ID": "5a1d87f73a7e65000b685f7f",
+  "Name": "logo.b13867c.png",
+  "Path": "./store/f78bb4352b7f0f1cac79fe204f07f69e-logo.b13867c.png",
+  "ContentType": "image/png",
+  "InSize": 7237,
+  "OutSize": 1379,
+  "UserName": "test",
   "Host": "sct.ru",
-  "Keep": 0,
-  "Timestamp": "2017-10-17T10:04:02.388412239+03:00"
+  "Keep": 1,
+  "Timestamp": "2017-11-28T18:59:51.965003054+03:00"
 }
 ```
 
