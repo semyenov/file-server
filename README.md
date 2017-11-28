@@ -1,5 +1,7 @@
 # Golang / Mgo file server
 
+File store with web interface and image optimization options (jpegoptim & pngquant)
+
 ## Example
 
 curl:
