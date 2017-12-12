@@ -358,6 +358,7 @@ func optImg(pt string, ct string, pngqlt int, jpgqlt int) error {
 			fmt.Sprintf("%s-%s", strconv.Itoa(pngqlt), strconv.Itoa(pngqlt)),
 			"--ext",
 			".png",
+			"--strip",
 			"--force",
 			pt,
 		)
