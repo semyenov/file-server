@@ -342,13 +342,13 @@ func unauthorized(w http.ResponseWriter, realm string) {
 	w.WriteHeader(http.StatusUnauthorized)
 }
 
-func calcPath(fn string) string {
+func calcPath(ex string) string {
 	crutime := time.Now().Unix()
 	h := md5.New()
-	io.WriteString(h, fmt.Sprintf("%s + %d + %s", strconv.FormatInt(crutime, 20), rand.Int63(), fn))
+	io.WriteString(h, fmt.Sprintf("%s + %d + %s", strconv.FormatInt(crutime, 20), rand.Int63(), ex))
 	hash := h.Sum(nil)
 
-	return fmt.Sprintf("./store/%x-%s", hash, fn)
+	return fmt.Sprintf("./store/%x%s", hash, ex)
 }
 
 func optImg(pt string, ct string, pngqlt int, jpgqlt int) error {
@@ -465,7 +465,7 @@ func urlPost(s *mgo.Session) func(w http.ResponseWriter, r *http.Request) {
 		}
 
 		fn = strings.Join([]string{fn, ex}, "")
-		pt := calcPath(fn)
+		pt := calcPath(ex)
 
 		fo, err := os.OpenFile(pt, os.O_RDWR|os.O_CREATE, 0666)
 		if err != nil {
