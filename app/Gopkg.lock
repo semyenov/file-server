@@ -2,14 +2,8 @@
 
 
 [[projects]]
-  name = "github.com/go-chi/chi"
-  packages = ["."]
-  revision = "e83ac2304db3c50cf03d96a2fcd39009d458bc35"
-  version = "v3.3.2"
-
-[[projects]]
-  branch = "v2"
-  name = "gopkg.in/mgo.v2"
+  branch = "master"
+  name = "github.com/globalsign/mgo"
   packages = [
     ".",
     "bson",
@@ -17,11 +11,17 @@
     "internal/sasl",
     "internal/scram"
   ]
-  revision = "3f83fa5005286a7fe593b055f0d7771a7dce4655"
+  revision = "efe0945164a7e582241f37ae8983c075f8f2e870"
+
+[[projects]]
+  name = "github.com/go-chi/chi"
+  packages = ["."]
+  revision = "e83ac2304db3c50cf03d96a2fcd39009d458bc35"
+  version = "v3.3.2"
 
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "8fe77abb359fc427a4f4a3662072448b8288e1048dc4ddcf84150f7ba7805df4"
+  inputs-digest = "fe98322a6565cbaa325ae77ea39330592ba09138972405d240e9e0620115292b"
   solver-name = "gps-cdcl"
   solver-version = 1

@@ -19,9 +19,9 @@ import (
 	"strings"
 	"time"
 
+	"github.com/globalsign/mgo"
+	"github.com/globalsign/mgo/bson"
 	"github.com/go-chi/chi"
-	"gopkg.in/mgo.v2"
-	"gopkg.in/mgo.v2/bson"
 )
 
 const tpl1 = `
@@ -38,7 +38,6 @@ const tpl1 = `
 			height: 100%;
 		}
 		body {
-			background-image: linear-gradient(to bottom, rgba(33, 33, 33, 0.05) 0%, rgb(248, 248, 248) 100%);
 			background-repeat: no-repeat;
 		}
 		form {
@@ -146,7 +145,6 @@ const tpl2 = `
 			height: 100%;
 		}
 		body {
-			background-image: linear-gradient(to bottom, rgba(33, 33, 33, 0.05) 0%, rgb(248, 248, 248) 100%);
 			background-repeat: no-repeat;
 		}
 		.container {
